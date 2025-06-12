@@ -1,0 +1,124 @@
+/* Visit Logs Specific Styles */
+.visit-logs-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.visit-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+}
+
+.visit-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.visit-table th,
+.visit-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.visit-table th {
+    background-color: var(--light-gray);
+    font-weight: 600;
+}
+
+.visit-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    display: inline-block;
+}
+
+.status-pending {
+    background-color: var(--warning-color);
+    color: var(--text-color);
+}
+
+.status-completed {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.status-urgent {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.visit-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.visit-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.visit-info,
+.treatment-info {
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.visit-info h3,
+.treatment-info h3 {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+}
+
+.info-label {
+    font-weight: 500;
+    color: #666;
+}
+
+.medication-dispensed {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .visit-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .visit-actions {
+        flex-direction: column;
+    }
+
+    .visit-actions button {
+        width: 100%;
+    }
+
+    .visit-details {
+        grid-template-columns: 1fr;
+    }
+} 

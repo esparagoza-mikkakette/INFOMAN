@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDMHS Medical System - Student Records</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="student-records.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-hospital-alt"></i>
+                <div>
+                    <h1>PDMHS MEDICAL SYSTEM</h1>
+                    <p>President Diosdado Macapagal High School</p>
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-info">
+                <i class="fas fa-user-nurse"></i>
+                <span>Nurse Rivera</span>
+                <span class="role">School Clinic Staff</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+        <a href="../dashboard/index.html" class="nav-tab">
+            <i class="fas fa-chart-line"></i> Dashboard
+        </a>
+        <a href="index.html" class="nav-tab active">
+            <i class="fas fa-user-injured"></i> Student Records
+        </a>
+        <a href="../visit-logs/index.html" class="nav-tab">
+            <i class="fas fa-clipboard-list"></i> Visit Logs
+        </a>
+        <a href="../medications/index.html" class="nav-tab">
+            <i class="fas fa-pills"></i> Medications
+        </a>
+        <a href="../reports/index.html" class="nav-tab">
+            <i class="fas fa-chart-bar"></i> Reports
+        </a>
+        <a href="../settings/index.html" class="nav-tab">
+            <i class="fas fa-cog"></i> Settings
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-header">
+            <h2>Student Health Records</h2>
+            <button class="btn btn-primary" onclick="showAddStudentModal()">
+                <i class="fas fa-plus"></i> Add New Student
+            </button>
+        </div>
+
+        <div class="student-record-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Student LRN</label>
+                    <input type="text" id="studentLRN" placeholder="Enter Student LRN">
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="fullName" placeholder="Enter Full Name">
+                </div>
+                <div class="form-group">
+                    <label>Grade & Section</label>
+                    <select id="gradeSection">
+                        <option value="">Select Grade & Section</option>
+                        <option value="7-A">Grade 7-A</option>
+                        <option value="7-B">Grade 7-B</option>
+                        <option value="8-A">Grade 8-A</option>
+                        <option value="8-B">Grade 8-B</option>
+                        <option value="9-A">Grade 9-A</option>
+                        <option value="10-A">Grade 10-A</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input type="date" id="dateOfBirth">
+                </div>
+            </div>
+
+            <div class="medical-history-section">
+                <h3><i class="fas fa-history"></i> Medical History & Allergies</h3>
+                <div class="checkbox-grid">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="conditions" value="allergy-peanut">
+                        <span>Peanut Allergy</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="conditions" value="allergy-shellfish">
+                        <span>Shellfish Allergy</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="conditions" value="asthma">
+                        <span>Asthma</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="conditions" value="diabetes">
+                        <span>Diabetes</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="conditions" value="hypertension">
+                        <span>Hypertension</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="conditions" value="heart-condition">
+                        <span>Heart Condition</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="dental-section">
+                <h3><i class="fas fa-tooth"></i> Dental Records</h3>
+                <div class="dental-grid">
+                    <div class="form-group">
+                        <label>Last Dental Checkup</label>
+                        <input type="date" id="lastDentalCheckup">
+                    </div>
+                    <div class="form-group">
+                        <label>Dental Conditions</label>
+                        <select id="dentalConditions" multiple>
+                            <option value="cavities">Cavities</option>
+                            <option value="gingivitis">Gingivitis</option>
+                            <option value="braces">Braces</option>
+                            <option value="tooth-extraction">Tooth Extraction Needed</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emergency-contact">
+                <h3><i class="fas fa-phone"></i> Emergency Contact</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Parent/Guardian Name</label>
+                        <input type="text" id="guardianName" placeholder="Enter Guardian Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="tel" id="guardianPhone" placeholder="Enter Phone Number">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn btn-primary" onclick="saveStudentRecord()">
+                    <i class="fas fa-save"></i> Save Record
+                </button>
+                <button class="btn btn-secondary" onclick="clearForm()">
+                    <i class="fas fa-eraser"></i> Clear Form
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../assets/js/utils.js"></script>
+    <script src="../../assets/js/data.js"></script>
+    <script src="student-records.js"></script>
+</body>
+</html> 

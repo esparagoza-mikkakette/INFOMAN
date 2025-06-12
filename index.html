@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDMHS Medical System - Student Health Records</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-hospital-alt"></i>
+                <div>
+                    <h1>PDMHS MEDICAL SYSTEM</h1>
+                    <p>President Diosdado Macapagal High School</p>
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-info">
+                <i class="fas fa-user-nurse"></i>
+                <span>Nurse Rivera</span>
+                <span class="role">School Clinic Staff</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+        <button class="nav-tab active" data-tab="dashboard">
+            <i class="fas fa-chart-line"></i> Dashboard
+        </button>
+        <button class="nav-tab" data-tab="student-records">
+            <i class="fas fa-user-injured"></i> Student Records
+        </button>
+        <button class="nav-tab" data-tab="visit-logs">
+            <i class="fas fa-clipboard-list"></i> Visit Logs
+        </button>
+        <button class="nav-tab" data-tab="medications">
+            <i class="fas fa-pills"></i> Medications
+        </button>
+        <button class="nav-tab" data-tab="reports">
+            <i class="fas fa-chart-bar"></i> Reports
+        </button>
+        <button class="nav-tab" data-tab="settings">
+            <i class="fas fa-cog"></i> Settings
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Tab -->
+        <div id="dashboard" class="tab-content active">
+            <div class="search-bar">
+                <input type="text" placeholder="Search student by ID or name..." id="studentSearch">
+                <button class="btn btn-primary" onclick="searchStudent()">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">40</div>
+                    <div class="stat-label">Active Visits Today</div>
+                    <i class="fas fa-user-clock stat-icon"></i>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,245</div>
+                    <div class="stat-label">Total Student Records</div>
+                    <i class="fas fa-users stat-icon"></i>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Pending Treatments</div>
+                    <i class="fas fa-exclamation-triangle stat-icon"></i>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="quick-actions">
+                    <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    <button class="action-btn" onclick="showNewVisitModal()">
+                        <i class="fas fa-plus"></i> New Visit
+                    </button>
+                    <button class="action-btn" onclick="showAddStudentModal()">
+                        <i class="fas fa-user-plus"></i> Add Student
+                    </button>
+                    <button class="action-btn" onclick="showTab('medications')">
+                        <i class="fas fa-pills"></i> Medications
+                    </button>
+                    <button class="action-btn" onclick="generateReport()">
+                        <i class="fas fa-file-alt"></i> Generate Reports
+                    </button>
+                </div>
+
+                <div class="recent-activity">
+                    <h3><i class="fas fa-clock"></i> Recent Activity</h3>
+                    <div class="activity-item">
+                        <i class="fas fa-pills activity-icon"></i>
+                        <div>
+                            <p>Juan Cruz (Grade 8-B) administered medication for fever</p>
+                            <small>45 minutes ago</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-user-plus activity-icon"></i>
+                        <div>
+                            <p>New student record created for Pedro Reyes (Grade 7-C)</p>
+                            <small>2 hours ago</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-chart-line activity-icon"></i>
+                        <div>
+                            <p>Monthly clinic visit report generated</p>
+                            <small>Yesterday 4:30 PM</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Records Tab -->
+        <div id="student-records" class="tab-content">
+            <div class="section-header">
+                <h2>Student Health Records</h2>
+                <button class="btn btn-primary" onclick="showAddStudentModal()">
+                    <i class="fas fa-plus"></i> Add New Student
+                </button>
+            </div>
+
+            <div class="student-record-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Student LRN</label>
+                        <input type="text" id="studentLRN" placeholder="Enter Student LRN">
+                    </div>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Grade & Section</label>
+                        <select id="gradeSection">
+                            <option value="">Select Grade & Section</option>
+                            <option value="7-A">Grade 7-A</option>
+                            <option value="7-B">Grade 7-B</option>
+                            <option value="8-A">Grade 8-A</option>
+                            <option value="8-B">Grade 8-B</option>
+                            <option value="9-A">Grade 9-A</option>
+                            <option value="10-A">Grade 10-A</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" id="dateOfBirth">
+                    </div>
+                </div>
+
+                <div class="medical-history-section">
+                    <h3><i class="fas fa-history"></i> Medical History & Allergies</h3>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="conditions" value="allergy-peanut">
+                            <span>Peanut Allergy</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="conditions" value="allergy-shellfish">
+                            <span>Shellfish Allergy</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="conditions" value="asthma">
+                            <span>Asthma</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="conditions" value="diabetes">
+                            <span>Diabetes</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="conditions" value="hypertension">
+                            <span>Hypertension</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="conditions" value="heart-condition">
+                            <span>Heart Condition</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="dental-section">
+                    <h3><i class="fas fa-tooth"></i> Dental Records</h3>
+                    <div class="dental-grid">
+                        <div class="form-group">
+                            <label>Last Dental Checkup</label>
+                            <input type="date" id="lastDentalCheckup">
+                        </div>
+                        <div class="form-group">
+                            <label>Dental Conditions</label>
+                            <select id="dentalConditions" multiple>
+                                <option value="cavities">Cavities</option>
+                                <option value="gingivitis">Gingivitis</option>
+                                <option value="braces">Braces</option>
+                                <option value="tooth-extraction">Tooth Extraction Needed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emergency-contact">
+                    <h3><i class="fas fa-phone"></i> Emergency Contact</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Parent/Guardian Name</label>
+                            <input type="text" id="guardianName" placeholder="Enter Guardian Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Number</label>
+                            <input type="tel" id="guardianPhone" placeholder="Enter Phone Number">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-primary" onclick="saveStudentRecord()">
+                        <i class="fas fa-save"></i> Save Record
+                    </button>
+                    <button class="btn btn-secondary" onclick="clearForm()">
+                        <i class="fas fa-eraser"></i> Clear Form
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visit Logs Tab -->
+        <div id="visit-logs" class="tab-content">
+            <div class="section-header">
+                <h2>Clinic Visit Logs</h2>
+                <button class="btn btn-primary" onclick="showNewVisitModal()">
+                    <i class="fas fa-plus"></i> New Visit
+                </button>
+            </div>
+
+            <div class="visit-logs-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Student Name</th>
+                            <th>Grade & Section</th>
+                            <th>Complaint</th>
+                            <th>Treatment</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="visitLogTableBody">
+                        <!-- Dynamic content will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Medications Tab -->
+        <div id="medications" class="tab-content">
+            <div class="section-header">
+                <h2>Medication Inventory</h2>
+                <button class="btn btn-primary" onclick="showAddMedicationModal()">
+                    <i class="fas fa-plus"></i> Add Medication
+                </button>
+            </div>
+
+            <div class="medication-grid">
+                <div class="medication-card">
+                    <h4>Paracetamol</h4>
+                    <p class="stock">Stock: 150 tablets</p>
+                    <p class="expiry">Exp: Dec 2025</p>
+                    <div class="medication-actions">
+                        <button class="btn btn-sm btn-primary">Dispense</button>
+                        <button class="btn btn-sm btn-secondary">Edit</button>
+                    </div>
+                </div>
+                <div class="medication-card">
+                    <h4>Ibuprofen</h4>
+                    <p class="stock low-stock">Stock: 25 tablets</p>
+                    <p class="expiry">Exp: Jan 2026</p>
+                    <div class="medication-actions">
+                        <button class="btn btn-sm btn-primary">Dispense</button>
+                        <button class="btn btn-sm btn-secondary">Edit</button>
+                    </div>
+                </div>
+                <div class="medication-card">
+                    <h4>Antiseptic Solution</h4>
+                    <p class="stock">Stock: 8 bottles</p>
+                    <p class="expiry">Exp: Mar 2026</p>
+                    <div class="medication-actions">
+                        <button class="btn btn-sm btn-primary">Dispense</button>
+                        <button class="btn btn-sm btn-secondary">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Tab -->
+        <div id="reports" class="tab-content">
+            <div class="section-header">
+                <h2>Health Reports</h2>
+                <button class="btn btn-primary" onclick="generateReport()">
+                    <i class="fas fa-download"></i> Generate Report
+                </button>
+            </div>
+
+            <div class="report-options">
+                <div class="report-card">
+                    <h4><i class="fas fa-chart-line"></i> Monthly Visit Summary</h4>
+                    <p>Generate monthly clinic visit statistics</p>
+                    <button class="btn btn-outline">Generate</button>
+                </div>
+                <div class="report-card">
+                    <h4><i class="fas fa-pills"></i> Medication Usage Report</h4>
+                    <p>Track medication inventory and dispensing</p>
+                    <button class="btn btn-outline">Generate</button>
+                </div>
+                <div class="report-card">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Health Alerts</h4>
+                    <p>Students with chronic conditions requiring monitoring</p>
+                    <button class="btn btn-outline">Generate</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings" class="tab-content">
+            <div class="section-header">
+                <h2>System Settings</h2>
+            </div>
+
+            <div class="settings-sections">
+                <div class="settings-card">
+                    <h4><i class="fas fa-user-cog"></i> User Preferences</h4>
+                    <div class="form-group">
+                        <label>Default View</label>
+                        <select>
+                            <option>Dashboard</option>
+                            <option>Student Records</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Notifications</label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" checked>
+                            <span>Email notifications for urgent cases</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h4><i class="fas fa-database"></i> Data Management</h4>
+                    <button class="btn btn-outline">Export All Records</button>
+                    <button class="btn btn-outline">Backup Database</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div id="newVisitModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>New Clinic Visit</h3>
+                <button class="close-modal" onclick="closeModal('newVisitModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Student LRN</label>
+                    <input type="text" id="visitStudentLRN" placeholder="Enter Student LRN">
+                </div>
+                <div class="form-group">
+                    <label>Chief Complaint</label>
+                    <textarea id="chiefComplaint" placeholder="Enter chief complaint"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Treatment Given</label>
+                    <textarea id="treatmentGiven" placeholder="Enter treatment given"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Condition Urgency</label>
+                    <select id="urgencyLevel">
+                        <option value="routine">Routine</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="emergency">Emergency</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="saveVisitLog()">Save Visit</button>
+                <button class="btn btn-secondary" onclick="closeModal('newVisitModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
