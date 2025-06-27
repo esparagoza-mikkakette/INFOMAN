@@ -1,0 +1,177 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+.login-container {
+    display: flex;
+    height: 100vh;
+}
+.login-bg {
+    flex: 1.5;
+    position: relative;
+    overflow: hidden;
+}
+.campus-bg {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+.login-form-wrapper {
+    flex: 1;
+    background: rgba(255,255,255,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 350px;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.04);
+}
+.login-form {
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 24px 24px 24px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+.school-logo {
+    width: 80px;
+    margin-bottom: 12px;
+}
+.login-form h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 2px 0;
+    text-align: center;
+}
+.login-form h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0 0 18px 0;
+    text-align: center;
+}
+.login-instruction {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 16px;
+    text-align: center;
+}
+.user-type-selector {
+    width: 100%;
+    margin-bottom: 16px;
+}
+.user-type-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    text-align: center;
+}
+.user-type-options {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+.user-type-option {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85rem;
+    color: #555;
+    cursor: pointer;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f8f8f8;
+    transition: all 0.2s;
+}
+.user-type-option:hover {
+    background: #e8f4f8;
+    border-color: #4ecdc4;
+}
+.user-type-options input[type="radio"] {
+    display: none;
+}
+.user-type-options input[type="radio"]:checked + .user-type-option {
+    background: #4ecdc4;
+    color: white;
+    border-color: #4ecdc4;
+}
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background: #f8f8f8;
+    box-sizing: border-box;
+}
+.login-form select {
+    cursor: pointer;
+    background: #f8f8f8 url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6,9 12,15 18,9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 8px center;
+    background-size: 16px;
+    padding-right: 32px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.login-form select:focus {
+    outline: none;
+    border-color: #4ecdc4;
+    box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.2);
+}
+.birthdate-fields {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    margin-bottom: 12px;
+}
+.birthdate-fields select {
+    flex: 1;
+    margin-bottom: 0;
+}
+.btn-login {
+    width: 100%;
+    padding: 10px 0;
+    background: #4ecdc4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+}
+.btn-login:hover {
+    background: #38b6a8;
+}
+.forgot-password {
+    color: #e57373;
+    font-size: 0.95rem;
+    text-decoration: none;
+    margin-top: 2px;
+    display: block;
+    text-align: center;
+}
+.forgot-password:hover {
+    text-decoration: underline;
+}
+.register-link {
+    color: #4ecdc4;
+    font-size: 0.95rem;
+    text-decoration: none;
+    margin-top: 8px;
+    display: block;
+    text-align: center;
+}
+.register-link:hover {
+    text-decoration: underline;
+} 
