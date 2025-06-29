@@ -1,0 +1,222 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: url('../assets/pdmhs_campus.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    background: rgba(255,255,255,0.92);
+    width: 100%;
+    max-width: 420px;
+    min-height: 540px;
+    margin: 40px 0;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 32px 32px 32px;
+    position: relative;
+}
+
+.logo {
+    width: 100px;
+    margin-bottom: 18px;
+}
+
+.school-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-align: center;
+    margin-bottom: 2px;
+    color: #1a3c4e;
+}
+
+.school-desc {
+    font-size: 1.05rem;
+    text-align: center;
+    margin-bottom: 22px;
+    color: #3b5d6b;
+}
+
+.welcome {
+    font-weight: bold;
+    font-size: 1.12rem;
+    margin-bottom: 2px;
+    text-align: center;
+    color: #2b5d5b;
+}
+
+.subtext {
+    font-size: 0.98rem;
+    color: #444;
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #b5cfd2;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    background: #f8fafd;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+input[type="text"]:focus, input[type="password"]:focus {
+    border: 1.5px solid #5fc9c4;
+    outline: none;
+    box-shadow: 0 0 0 2px #e0f7f6;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"].birth {
+    width: 33%;
+}
+
+.btn, .signin-btn, .quick-actions-list button, .search-bar button {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 1.18rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(95,201,196,0.08);
+    transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+    min-height: 48px;
+    min-width: 120px;
+    padding: 14px 0;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn:focus, .signin-btn:focus, .quick-actions-list button:focus, .search-bar button:focus {
+    outline: 3px solid #195b8b;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px #e0f7f6;
+}
+
+.btn-student, .btn-clinic, .signin-btn {
+    background: #2874b2;
+    color: #fff;
+}
+
+.btn-student:hover, .btn-clinic:hover, .signin-btn:hover {
+    background: #195b8b;
+    color: #fff;
+}
+
+.btn-faculty {
+    background: #e15a5a;
+    color: #fff;
+}
+
+.btn-faculty:hover {
+    background: #b93c3c;
+    color: #fff;
+}
+
+.quick-actions-list button {
+    background: #f6f7f9;
+    color: #195b8b;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.quick-actions-list button:hover, .quick-actions-list button:focus {
+    background: #eaf3fa;
+    color: #195b8b;
+}
+
+.search-bar button {
+    background: #2874b2;
+    color: #fff;
+    border-radius: 7px;
+    font-size: 1.08rem;
+    font-weight: 500;
+    padding: 0 32px;
+}
+
+.search-bar button:hover, .search-bar button:focus {
+    background: #195b8b;
+    color: #fff;
+}
+
+.forgot {
+    color: #e15a5a;
+    font-size: 0.97rem;
+    text-align: right;
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.forgot:hover {
+    text-decoration: underline;
+    color: #b93c3c;
+}
+
+/* Error message styling */
+.error-message {
+    background: #ffeaea;
+    color: #b93c3c;
+    border: 1px solid #e15a5a;
+    border-radius: 5px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Visually hidden for accessibility */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+@media (max-width: 600px) {
+    .overlay {
+        max-width: 98vw;
+        min-height: unset;
+        padding: 24px 6vw 24px 6vw;
+        margin: 0;
+        border-radius: 0;
+    }
+    .logo {
+        width: 70px;
+    }
+    .btn, .signin-btn {
+        font-size: 1rem;
+        padding: 11px 0;
+    }
+} 
